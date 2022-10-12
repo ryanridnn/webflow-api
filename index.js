@@ -5,7 +5,7 @@ const app = express();
 
 app.use(cors());
 
-app.get("/", async (req, res) => {
+app.get("/test", async (req, res) => {
   const resp = await axios({
     url: "https://api.webflow.com/collections/6331444324771a7fc18695e9/items",
     method: "GET",
