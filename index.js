@@ -52,6 +52,7 @@ app.get("/form1contents", async (req, res) => {
   contents = contents.map((content) => {
     return {
       _id: content._id,
+      name: content.name,
       content: content.contents,
       enableOption1: content["enable-option-1"],
       enableOption2: content["enable-option-2"],
