@@ -53,40 +53,8 @@ app.get("/form1contents", async (req, res) => {
     return {
       _id: content._id,
       name: content.name,
-      content: content.contents,
-      enableOption1: content["enable-option-1"],
-      enableOption2: content["enable-option-2"],
-      enableOption3: content["enable-option-3"],
-      enableOption4: content["enable-option-4"],
-      enableNotApplicable: content["enable-not-applicable-option"],
-      option1Label: content["option-1-label"],
-      option2Label: content["option-2-label"],
-      option3Label: content["option-3-label"],
-      option4Label: content["option-4-label"],
-      actionIfSelected1: content["action-if-selected-1"],
-      actionIfSelected2: content["action-if-selected-2"],
-      actionIfSelected3: content["action-if-selected-3"],
-      actionIfSelected4: content["action-if-selected-4"],
-      option1Comment: content["enable-option-1-comment"],
-      option2Comment: content["enable-option-2-comment"],
-      option3Comment: content["enable-option-3-comment"],
-      option4Comment: content["enable-option-4-comment"],
-      option1FileUpload: content["enable-option-1-file-upload"],
-      option2FileUpload: content["enable-option-2-file-upload"],
-      option3FileUpload: content["enable-option-3-file-upload"],
-      option4FileUpload: content["enable-option-4-file-upload"],
-      option1EnableWeighting:
-        typeof content["option-1-weighting"] === "number" ? true : false,
-      option2EnableWeighting:
-        typeof content["option-2-weighting"] === "number" ? true : false,
-      option3EnableWeighting:
-        typeof content["option-3-weighting"] === "number" ? true : false,
-      option4EnableWeighting:
-        typeof content["option-4-weighting"] === "number" ? true : false,
-      option1Weighting: content["option-1-weighting"],
-      option2Weighting: content["option-2-weighting"],
-      option3Weighting: content["option-3-weighting"],
-      option4Weighting: content["option-4-weighting"],
+      contents: content.contents,
+      settingsPreset: content["settings-preset"],
     };
   });
 
