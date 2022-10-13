@@ -7,7 +7,7 @@ app.use(cors());
 
 app.get("/form1contents", async (req, res) => {
   const contentResp = await axios({
-    url: "https://api.webflow.com/collections/6346b76c4b362ee0fe35c197/items",
+    url: "https://api.webflow.com/collections/6347a4f5d2c98b08677f6995/items",
     method: "GET",
     headers: {
       Authorization:
@@ -15,45 +15,20 @@ app.get("/form1contents", async (req, res) => {
     },
   });
 
-  const questionGroupsResp = await axios({
-    url: "https://api.webflow.com/collections/6346b4d00e39463ed13c1951/items",
-    method: "GET",
-    headers: {
-      Authorization:
-        "Bearer 8da4c236c0f49a9ad5e1e47a39edcf45db3e338c13cbf14d67c3abd078675fad",
-    },
-  });
-
-  // console.log(contentResp.data);
-  // console.log(questionGroupsResp.data);
-
-  const questionGroups = questionGroupsResp.data.items;
-
-  let contents = contentResp.data.items.map((content) => {
-    return {
-      ...content,
-      contents: content.contents.map((questionGroupId) => {
-        const questionGroup = questionGroups.find(
-          (questionGroup) => questionGroup._id === questionGroupId
-        );
-
-        if (!questionGroup) {
-          return {};
-        } else {
-          return {
-            sectionTitle: questionGroup["section-title"],
-            questions: questionGroup.questions,
-          };
-        }
-      }),
-    };
-  });
+  let contents = contentResp.data.items;
 
   contents = contents.map((content) => {
+    let evaluatedContents = [];
+    try {
+      evaluatedContents = eval(content.contents) || [];
+    } catch (e) {
+      evaluatedContents = [];
+    }
+
     return {
       _id: content._id,
       name: content.name,
-      contents: content.contents,
+      contents: evaluatedContents,
       settingsPreset: content["settings-preset"],
     };
   });
