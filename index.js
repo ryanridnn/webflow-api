@@ -30,6 +30,7 @@ app.get("/form1contents", async (req, res) => {
       name: content.name,
       contents: evaluatedContents,
       settingsPreset: content["settings-preset"],
+      presetIcon: content["preset-icon"],
     };
   });
 
